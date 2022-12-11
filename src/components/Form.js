@@ -8,8 +8,6 @@ export class Form extends Component {
         name: ''
     }
 
-    
-
 
     render () {
         return (
@@ -24,7 +22,7 @@ export class Form extends Component {
                     />
                 </label>
 
-                <button type="submit">Add contact</button>
+                <button className={css.submitBtn} type="submit">Add contact</button>
 
             </form>
         )
