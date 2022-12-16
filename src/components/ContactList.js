@@ -5,21 +5,22 @@ import css from "./ContactList.module.css";
 export const ContactList = ({contacts}) => {
     return (
         <ul className={css.list}>
-                {contacts.map( contact => {
+                {contacts.map( ({contact}) => (
                     <li key={contact.id} class={css.listItem}>
                         <p>{contact.name} : &nbsp</p>
-                        <p>{contact.tel}</p>
+                        <p>{contact.number}</p>
                     </li>
-                })}
+                ))}
         </ul>
     )
 }
 
-ContactList.propTypes={
-    contacts: PropTypes.arrayOf ({
-        contact: PropTypes.shape ({
+ContactList.propTypes = {
+    contacts: PropTypes.arrayOf (
+        PropTypes.shape ({
             id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
-            tel: PropTypes.string.isRequired})
-    }).isRequired 
+            number: PropTypes.string.isRequired
+        })
+    ) 
 }

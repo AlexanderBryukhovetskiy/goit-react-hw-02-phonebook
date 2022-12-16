@@ -23,15 +23,18 @@ export class App extends Component {
     
 
     render () {
-        return (
-            <Container>
-                <Form onSubmit={this.onSubmitHandler}/>
-
-                {(this.state.contacts) && <ContactList contacts={this.state.contacts}/>}
-
-            </Container>
+        return (            
+                <Container>
+                    <h1>Phone-book</h1>
+                    <Form onSubmit={this.onSubmitHandler}/>
+                
+                
+                    
+                    {(this.state.contacts) && <ContactList contacts={this.state.contacts}/>}  
+                </Container>
         )
     }
 };
 
 export default App;
+

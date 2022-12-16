@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 
 const initialState = {
     name: '',
-    tel: '',
+    number: '',
     id: ''
 }
 
@@ -25,7 +25,6 @@ export class Form extends Component {
     }
 
     reset = () => {
-        // this.setState ({ name: '', tel: '', id: ''});
         this.setState(initialState);
     }
 
@@ -51,7 +50,7 @@ export class Form extends Component {
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
-                value={this.state.tel}
+                value={this.state.number}
                 onChange={this.handleChange}
                 />
                 </label>
