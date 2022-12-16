@@ -7,8 +7,6 @@ import css from "./Form.module.css";
 export class Form extends Component {
     state = {
         name: '',
-        contactName: ''
-        // value: ''
     }
 
     handleChange = event => {
@@ -20,15 +18,12 @@ export class Form extends Component {
     
     handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state);
-        
         this.props.onSubmit(this.state);
-
         this.reset();
     }
 
     reset = () => {
-        this.setState ({ name: '', contactName: ''});
+        this.setState ({ name: ''});
     }
 
     render () {
@@ -41,7 +36,7 @@ export class Form extends Component {
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                 required
-                value={this.setState.contactName}
+                value={this.state.name}
                 onChange={this.handleChange}
                 />
             </label>
