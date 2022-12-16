@@ -1,25 +1,26 @@
 import React, { Component }  from "react";
-import { Form } from "./Form";
-
 import css from "./App.module.css";
+import { Form } from "./Form";
+import Container from "./Container";
+
 
 
 export class App extends Component {
 
     state = {
-      contacts: [],
-      name: ''
+        contacts: [],
     }
 
+    onSubmitHandler = data => {
+        console.log(data);
+    }
     render () {
         return (
-            <div className={css.container}>
-                <Form></Form>
-            </div>
-            
+            <Container>
+                <Form onSubmit={this.onSubmitHandler}/>
+            </Container>
         )
-    };
-}
+    }
+};
 
-
-// export default App;
+export default App;
