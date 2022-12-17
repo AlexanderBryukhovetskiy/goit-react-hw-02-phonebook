@@ -13,11 +13,11 @@ export class App extends Component {
         name: ''
     }
 
-    onSubmitHandler = data => { 
-        console.log('onSubmit data:', data);        
+    onSubmitHandler = contact => { 
+        console.log('onSubmit contact:', contact);        
         
         this.setState(  (prevState) => {
-            return ({contacts: [...prevState.contacts, data]})
+            ({contacts: [...prevState.contacts, contact] })
         })
     }
     

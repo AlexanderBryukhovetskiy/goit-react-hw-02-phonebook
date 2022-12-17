@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import css from "./Form.module.css";
-import { nanoid } from 'nanoid'
 
 const initialState = {
     name: '',
     number: '',
-    id: ''
 }
 
 export class Form extends Component {
@@ -13,7 +11,7 @@ export class Form extends Component {
 
     handleChange = event => {
         const { name, value } = event.currentTarget;
-        this.setState({ [name]: value, id: nanoid()});
+        this.setState({ [name]: value});
 
         console.log("name:", name, "value: ", value);
     }  
