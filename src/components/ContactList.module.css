@@ -1,6 +1,6 @@
-/* .list {
-
-} */
+.list {
+    margin-top: 10px;
+}
 .listItem {
     display: flex;
     column-gap: 10px;
@@ -10,4 +10,12 @@
 
 .listItem + .listItem {
     margin-top: 10px;
+}
+
+.contactName {
+    width: 170px;
+}
+
+.contactNumber {
+    width:  100px;
 }

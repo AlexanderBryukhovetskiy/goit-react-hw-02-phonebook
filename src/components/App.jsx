@@ -8,7 +8,6 @@ import {Filter} from "./Filter";
 
 
 export class App extends Component {
-
   state = {
     contacts: [
       {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
@@ -20,7 +19,14 @@ export class App extends Component {
   }
 
   onSubmitHandler = contact => { 
-    //console.log('onSubmit contact:', contact);        
+    const contacts = this.contacts;
+    contacts.forEach( (contactInBook) => {
+      if (contactInBook.name === contact) {
+        alert (`${contactInBook.name} is already in contacts.`)
+      };
+      return;
+    })
+
     this.setState(  (prevState) => {
       return ({contacts: [...prevState.contacts, contact] });
     })
@@ -32,12 +38,20 @@ export class App extends Component {
   }
 
   searchName = () => {
-    const searchName = this.state.filter.toLowerCase();
+    const searchingName = this.state.filter.toLowerCase();
 
     return this.state.contacts.filter( contact => (
-      contact.name.toLowerCase.includes(searchName)
+      contact.name.toLowerCase().includes(searchingName)
     ));
   }
+
+  deleteContact = id => { 
+    this.setState(  prevState => ({
+      contacts: prevState.contacts.filter( contact => contact.id !== id)
+    }))
+  }
+
+
   
   render () {
     const {contacts, filter} = this.state;
@@ -45,13 +59,18 @@ export class App extends Component {
         <Container>
           <div className={css.phoneBookContainer}>
             <h1 className={css.title}>Phonebook</h1>
-            <ContactForm onSubmit={this.onSubmitHandler}/>
+            <ContactForm 
+            onSubmit={this.onSubmitHandler}/>
           </div>
 
-          <h2 className={css.title}>Contacts</h2>  
-          <Filter inputValue={filter} onChange={this.onHandleFilter}/>  
+          <h2 className={css.title}>Contacts</h2> 
+
+          <Filter 
+          valueFilter={filter} 
+          onChangeFilter={this.onHandleFilter}/>  
             
-          { contacts.length > 0 && (<ContactList contacts={contacts}/>)}  
+          { contacts.length > 0 && 
+          (<ContactList contacts={this.searchName()} onBtnClick={this.deleteContact}/>)}  
 
         </Container>
       
