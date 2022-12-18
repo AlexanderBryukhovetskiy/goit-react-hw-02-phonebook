@@ -3,4 +3,11 @@
 } */
 .listItem {
     display: flex;
+    column-gap: 10px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.listItem + .listItem {
+    margin-top: 10px;
 }
