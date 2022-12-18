@@ -72,12 +72,12 @@ export class App extends Component {
           }   */}
 
 
-          { this.state.contacts.length > 0 
+          {/* { this.state.contacts.length > 0 
           && (<div>
                 
                 <ContactList contacts={this.state.contacts}/>
               </div>)
-          }  
+          }   */}
         </Container>
       
     )
