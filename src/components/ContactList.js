@@ -6,7 +6,6 @@ export const ContactList = ({contacts}) => {
     
   return <ul className={css.list}>
     {contacts.map( contact => (  
-    // {contacts.filter( ....?????}
       <li key={contact.id} className={css.listItem}>
         <p>{contact.name} : </p>
         <p>{contact.number}</p>

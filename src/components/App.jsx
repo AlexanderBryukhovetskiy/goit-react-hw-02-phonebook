@@ -17,13 +17,10 @@ export class App extends Component {
       {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
     ],
     filter: '',
-    name: '',
-    number: ''
   }
 
   onSubmitHandler = contact => { 
-    console.log('onSubmit contact:', contact);        
-    
+    //console.log('onSubmit contact:', contact);        
     this.setState(  (prevState) => {
       return ({contacts: [...prevState.contacts, contact] });
     })
@@ -31,53 +28,31 @@ export class App extends Component {
 
   onHandleFilter = event => {
     const value =  event.currentTarget.value;
-    
-    this.props.onChange({...this.state, filter: value});
+    this.setState({filter: value});
+  }
 
-  //   this.setState( (prevState) => {
-  //     return ({...prevState, filter: value})
-  // });
-    
+  searchName = () => {
+    const searchName = this.state.filter.toLowerCase();
 
-    // render ()
+    return this.state.contacts.filter( contact => (
+      contact.name.toLowerCase.includes(searchName)
+    ));
   }
   
   render () {
+    const {contacts, filter} = this.state;
     return (  
         <Container>
           <div className={css.phoneBookContainer}>
             <h1 className={css.title}>Phonebook</h1>
             <ContactForm onSubmit={this.onSubmitHandler}/>
           </div>
+
           <h2 className={css.title}>Contacts</h2>  
+          <Filter inputValue={filter} onChange={this.onHandleFilter}/>  
+            
+          { contacts.length > 0 && (<ContactList contacts={contacts}/>)}  
 
-
-          <Filter inputValue={this.state.filter}      OnChange={this.onHandleFilter}/>    
-
-
-
-          {/* <label>Find contact by name
-            <input
-            type="text"
-            value={this.state.filter}
-            onChange={this.handleInput}
-            />
-          </label> */}
-
-          {/* { this.state.contacts.length > 0 
-          && (<div>
-                <h1 className={css.title}>Contacts</h1>
-                <ContactList contacts={this.state.contacts}/>
-              </div>)
-          }   */}
-
-
-          {/* { this.state.contacts.length > 0 
-          && (<div>
-                
-                <ContactList contacts={this.state.contacts}/>
-              </div>)
-          }   */}
         </Container>
       
     )
