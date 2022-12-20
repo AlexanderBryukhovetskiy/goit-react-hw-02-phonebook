@@ -5,8 +5,6 @@ import Container from "./Container";
 import { ContactList } from "./ContactList";
 import {Filter} from "./Filter";
 
-
-
 export class App extends Component {
   state = {
     contacts: [
@@ -18,19 +16,21 @@ export class App extends Component {
     filter: '',
   }
 
-  onSubmitHandler = contact => { 
-    const contacts = this.contacts;
-    contacts.forEach( (contactInBook) => {
-      if (contactInBook.name === contact) {
-        alert (`${contactInBook.name} is already in contacts.`)
-      };
-      return;
-    })
-
-    this.setState(  (prevState) => {
-      return ({contacts: [...prevState.contacts, contact] });
-    })
-  }
+  onSubmitHandler = newContact => { 
+    const contacts = this.state.contacts;
+    const isUnique = contacts.filter( contactInBook => 
+      contactInBook.name === newContact.name);
+    
+    if (isUnique.length > 0) {
+      return alert (`${newContact.name} is already in contacts.`);
+    }
+    else {
+      this.setState(  (prevState) => {
+        return ({contacts: [...prevState.contacts, newContact] })
+      })
+      //console.log('newContact added to phonebook');
+    }
+}
 
   onHandleFilter = event => {
     const value =  event.currentTarget.value;
@@ -51,8 +51,6 @@ export class App extends Component {
     }))
   }
 
-
-  
   render () {
     const {contacts, filter} = this.state;
     return (  
