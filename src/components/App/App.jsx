@@ -1,9 +1,9 @@
 import React, { Component }  from "react";
 import css from "./App.module.css";
-import { ContactForm } from "./ContactForm";
-import Container from "./Container";
-import { ContactList } from "./ContactList";
-import {Filter} from "./Filter";
+import { ContactForm } from "../ContactForm/ContactForm";
+import Container from "../Container/Container";
+import { ContactList } from "../ContactList/ContactList";
+import {Filter} from "../Filter/Filter";
 
 export class App extends Component {
   state = {
@@ -19,7 +19,7 @@ export class App extends Component {
   onSubmitHandler = newContact => { 
     const contacts = this.state.contacts;
     const isUnique = contacts.filter( contactInBook => 
-      contactInBook.name === newContact.name);
+      contactInBook.name.toLowerCase() === newContact.name.toLowerCase());
     
     if (isUnique.length > 0) {
       return alert (`${newContact.name} is already in contacts.`);
@@ -34,7 +34,7 @@ export class App extends Component {
 
   onHandleFilter = event => {
     const value =  event.currentTarget.value;
-    this.setState({filter: value});
+    this.setState( {filter: value} );
   }
 
   searchName = () => {
@@ -77,4 +77,3 @@ export class App extends Component {
 };
 
 export default App;
-
